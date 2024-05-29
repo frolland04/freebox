@@ -23,25 +23,25 @@ async def demo():
 
     print("fbx", type(fbx))
     print("api_version", fbx.api_version)
+    print("--")
 
     fbx_perms = await fbx.get_permissions()
     print("permissions", type(fbx_perms), fbx_perms)
-
-    # Dump Freebox configuration using system API
-    # -------------------------------------------
-    fbx_system = await fbx.system.get_config()
-    print("fbx_system", type(fbx_system))
+    print("--")
 
     # Dump DHCP configuration using dhcp API
     # --------------------------------------
     fbx_dhcp = await fbx.dhcp.get_config()
     print("fbx_dhcp", type(fbx_dhcp))
+    print("--")
+
     print("fbx_dhcp.enabled",        fbx_dhcp["enabled"])
     print("fbx_dhcp.gateway",        fbx_dhcp["gateway"])
     print("fbx_dhcp.ip_range_start", fbx_dhcp["ip_range_start"])
     print("fbx_dhcp.ip_range_end",   fbx_dhcp["ip_range_end"])
     print("fbx_dhcp.netmask",        fbx_dhcp["netmask"])
     print("fbx_dhcp.dns",            fbx_dhcp["dns"])
+    print("--")
 
     # Alter and dump DHCP static leases
     # ---------------------------------
@@ -52,6 +52,7 @@ async def demo():
 
     fbx_dhcp_static_leases = await fbx.dhcp.get_dhcp_static_leases()
     print("fbx_dhcp_static_leases", type(fbx_dhcp_static_leases))
+    print("--")
 
     fbx_dhcp_output_lst=list()
 
@@ -66,6 +67,7 @@ async def demo():
     # ----------------------------
     fbx_lan_hosts = await fbx.lan.get_hosts_list()
     print("fbx_lan_hosts", type(fbx_lan_hosts))
+    print("--")
 
     for index, elt in enumerate(fbx_lan_hosts, start=1):
         print(index,
@@ -74,9 +76,9 @@ async def demo():
         fbx_dhcp_output_lst.append({"mac": elt["l2ident"]["id"], "ip": "", "comment": elt["primary_name"]})
 
     # Save DHCP leases + LAN hosts to JSON
-    with open("dhcp-leases.json", "w") as of: 
+    with open("dhcp-leases.json", "w") as of:
         json.dump(fbx_dhcp_output_lst, of)
-        
+
     # Close the freebox session
     await fbx.close()
 

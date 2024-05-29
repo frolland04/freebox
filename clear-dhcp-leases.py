@@ -5,7 +5,6 @@ This example clears the DHCP leases from the Freebox.
 """
 
 import asyncio
-import json
 from freebox_api import Freepybox
 
 
@@ -26,11 +25,6 @@ async def demo():
 
     fbx_perms = await fbx.get_permissions()
     print("permissions", type(fbx_perms), fbx_perms)
-
-    # Dump Freebox configuration using system API
-    # -------------------------------------------
-    fbx_system = await fbx.system.get_config()
-    print("fbx_system", type(fbx_system))
 
     # Dump DHCP configuration using dhcp API
     # --------------------------------------
