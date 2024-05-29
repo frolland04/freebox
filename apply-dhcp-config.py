@@ -77,8 +77,8 @@ async def demo():
     fbx_lan["name_netbios"]      = "Freebox-Server"
     fbx_dhcp["enabled"]          = True
     fbx_dhcp["gateway"]          = "192.168.0.254"
-    fbx_dhcp["ip_range_start"]   = "192.168.0.1"
-    fbx_dhcp["ip_range_end"]     = "192.168.0.199"
+    fbx_dhcp["ip_range_start"]   = "192.168.0.5"
+    fbx_dhcp["ip_range_end"]     = "192.168.0.25"
     fbx_dhcp["netmask"]          = "255.255.255.0"
     fbx_dhcp["dns"]              = ['192.168.0.254','8.8.8.8','8.8.4.4','']
     fbx_dhcp["always_broadcast"] = False
